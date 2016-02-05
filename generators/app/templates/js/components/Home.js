@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as HomeActions from '../actions/HomeActions';
-import styles from '../../css/app.css';
+import styles from '../../stylus/app.styl';
 
 class Home extends Component {
   render() {

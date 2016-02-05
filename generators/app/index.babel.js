@@ -145,6 +145,7 @@ export default Base.extend({
           'extract-text-webpack-plugin',
           'path',
           'style-loader',
+          'stylus-loader',
           ['webpack', '1.0.0'],
           'webpack-dev-middleware',
           'webpack-hot-middleware'
@@ -167,7 +168,7 @@ export default Base.extend({
       this.copy('server.js', 'server.js');
       this.copy('index.html', 'index.html');
       this.copy('js/index.js', 'js/index.js');
-      this.directory('css', 'css');
+      this.directory('stylus', 'stylus');
       this.directory('js/actions', 'js/actions');
       this.directory('js/components', 'js/components');
       this.directory('js/constants', 'js/constants');

@@ -18,12 +18,14 @@ module.exports = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     devFlagPlugin,
-    new ExtractTextPlugin('app.css')
+    new ExtractTextPlugin('app.css', {
+      allChunks: true
+    })
   ],
   module: {
     loaders: [
       { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?module!cssnext-loader') }
+      { test: /\.styl$/, loader: ExtractTextPlugin.extract('css-loader?module!stylus') }
     ]
   },
   resolve: {
