@@ -156,7 +156,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
       this.copy('server.js', 'server.js');
       this.copy('index.html', 'index.html');
       this.copy('js/index.js', 'js/index.js');
-      this.directory('css', 'css');
+      this.directory('stylus', 'stylus');
       this.directory('js/actions', 'js/actions');
       this.directory('js/components', 'js/components');
       this.directory('js/constants', 'js/constants');
