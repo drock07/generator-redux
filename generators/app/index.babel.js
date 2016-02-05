@@ -100,9 +100,7 @@ export default Base.extend({
 
   configuring: {
     os() {
-      this.props.start = os.platform === 'win32'
-        ? 'set DEBUG=true | node server.js'
-        : 'DEBUG=true node server.js';
+      this.props.start = 'node server.js';
     },
 
     deps() {

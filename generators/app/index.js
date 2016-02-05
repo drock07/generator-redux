@@ -18,9 +18,9 @@ var _slug = require('slug');
 
 var _slug2 = _interopRequireDefault(_slug);
 
-var _os2 = require('os');
+var _os = require('os');
 
-var _os3 = _interopRequireDefault(_os2);
+var _os2 = _interopRequireDefault(_os);
 
 var _chalk = require('chalk');
 
@@ -130,7 +130,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
 
   configuring: {
     os: function os() {
-      this.props.start = _os3['default'].platform === 'win32' ? 'set DEBUG=true | node server.js' : 'DEBUG=true node server.js';
+      this.props.start = 'node server.js';
     },
 
     deps: function deps() {
