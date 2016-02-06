@@ -18,9 +18,9 @@ var _slug = require('slug');
 
 var _slug2 = _interopRequireDefault(_slug);
 
-var _os = require('os');
+var _os2 = require('os');
 
-var _os2 = _interopRequireDefault(_os);
+var _os3 = _interopRequireDefault(_os2);
 
 var _chalk = require('chalk');
 
@@ -131,6 +131,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
   configuring: {
     os: function os() {
       this.props.start = 'node server.js';
+      this.props.buildVars = _os3['default'].platform === 'win32' ? 'set NODE_ENV=production | set DEBUG=false |' : 'NODE_ENV=production DEBUG=false';
     },
 
     deps: function deps() {
@@ -138,7 +139,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
     },
 
     devDeps: function devDeps() {
-      this.getPackageVersions('devDeps', [['babel-core', '6.3.15'], ['babel-eslint', '5.0.0-beta4'], ['babel-loader', '6.2.0'], ['babel-preset-es2015', '6.3.13'], ['babel-preset-react', '6.3.13'], ['babel-preset-react-hmre', '1.0.0'], ['babel-preset-stage-0', '6.3.13'], ['cross-env', '1.0.6'], 'css-loader', 'cssnext-loader', ['eslint', '1.10.3'], ['eslint-plugin-babel', '3.0.0'], ['eslint-plugin-react', '3.11.3'], ['eventsource-polyfill', '0.9.6'], 'express', 'extract-text-webpack-plugin', 'path', 'style-loader', 'stylus-loader', ['webpack', '1.0.0'], 'webpack-dev-middleware', 'webpack-hot-middleware']);
+      this.getPackageVersions('devDeps', [['babel-core', '6.3.15'], ['babel-eslint', '5.0.0-beta4'], ['babel-loader', '6.2.0'], ['babel-preset-es2015', '6.3.13'], ['babel-preset-react', '6.3.13'], ['babel-preset-react-hmre', '1.0.0'], ['babel-preset-stage-0', '6.3.13'], ['cross-env', '1.0.6'], 'css-loader', ['eslint', '1.10.3'], ['eslint-plugin-babel', '3.0.0'], ['eslint-plugin-react', '3.11.3'], ['eventsource-polyfill', '0.9.6'], 'express', 'extract-text-webpack-plugin', ['html-webpack-plugin', '2.8.1'], 'path', 'style-loader', 'stylus-loader', ['webpack', '1.0.0'], 'webpack-dev-middleware', 'webpack-hot-middleware']);
     }
   },
 
@@ -155,6 +156,7 @@ exports['default'] = _yeomanGenerator.Base.extend({
       this.copy('webpack.production.js', 'webpack.production.js');
       this.copy('server.js', 'server.js');
       this.copy('index.html', 'index.html');
+      this.fs.copy(this.templatePath('index.tpl.html'), this.destinationPath('index.tpl.html'));
       this.copy('js/index.js', 'js/index.js');
       this.directory('stylus', 'stylus');
       this.directory('js/actions', 'js/actions');

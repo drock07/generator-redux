@@ -101,6 +101,9 @@ export default Base.extend({
   configuring: {
     os() {
       this.props.start = 'node server.js';
+      this.props.buildVars = os.platform === 'win32'
+        ? 'set NODE_ENV=production | set DEBUG=false |'
+        : 'NODE_ENV=production DEBUG=false';
     },
 
     deps() {
@@ -134,13 +137,13 @@ export default Base.extend({
           ['babel-preset-stage-0', '6.3.13'],
           ['cross-env', '1.0.6'],
           'css-loader',
-          'cssnext-loader',
           ['eslint', '1.10.3'],
           ['eslint-plugin-babel', '3.0.0'],
           ['eslint-plugin-react', '3.11.3'],
           ['eventsource-polyfill', '0.9.6'],
           'express',
           'extract-text-webpack-plugin',
+          ['html-webpack-plugin', '2.8.1'],
           'path',
           'style-loader',
           'stylus-loader',
@@ -165,6 +168,7 @@ export default Base.extend({
       this.copy('webpack.production.js', 'webpack.production.js');
       this.copy('server.js', 'server.js');
       this.copy('index.html', 'index.html');
+      this.fs.copy(this.templatePath('index.tpl.html'), this.destinationPath('index.tpl.html'));
       this.copy('js/index.js', 'js/index.js');
       this.directory('stylus', 'stylus');
       this.directory('js/actions', 'js/actions');

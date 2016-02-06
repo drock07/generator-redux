@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "start": "<%= start %>",
-    "build": "webpack -p --config webpack.production.js",
+    "build": "<%= buildVars %> webpack -p --config webpack.production.js",
     "build-dev": "webpack -p"
   },
   "dependencies": <%- JSON.stringify(deps, null, 2).replace(/\n/g, "\n  ") %>,
